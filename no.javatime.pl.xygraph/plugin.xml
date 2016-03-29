@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+<!--
+This is only to get the view in Show view. Also needs a tag in part in code
+see Vogalla about the name of the tag
+-->
+
+<!--
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Sample Category"
+            id="no.javatime.pl.xygraph">
+      </category>
+      <e4view
+            category="no.javatime.pl.xygraph"
+            class="no.javatime.pl.xygraph.views.XYGraphView"
+            icon="icons/sample.gif"
+            id="no.javatime.pl.xygraph.views.XYGraphView"
+            name="XY Graph View"
+            restorable="true">
+      </e4view>
+   </extension>
+ -->
+ 
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="no.javatime.pl.xygraph.views.XYGraphView"
+               minimized="false"
+               relationship="right"
+               relative="org.eclipse.ui.editorss"
+               standalone="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   
+</plugin>

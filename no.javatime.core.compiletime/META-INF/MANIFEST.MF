@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Compiletime
+Bundle-SymbolicName: no.javatime.core.compiletime
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: no.javatime.core.compiletime.Activator
+Export-Package: no.javatime.core.compiletime.analysis
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.11.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: no.javatime.core.model.annotations,
+ no.javatime.inplace.extender.intface,
+ no.javatime.inplace.region.intface,
+ org.eclipse.core.resources,
+ org.eclipse.jdt.annotation,
+ org.eclipse.jdt.core,
+ org.osgi.framework;version="1.3.0"

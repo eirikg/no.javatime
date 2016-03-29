@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: no.javatime.lang
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: no.javatime.lang; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.common.types,
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.common
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: no.javatime.lang.model.util,
+ no.javatime.lang.validation,
+ no.javatime.lang,
+ no.javatime.lang.jvmmodel,
+ no.javatime.lang.model.impl,
+ no.javatime.lang.parser.antlr.internal,
+ no.javatime.lang.services,
+ no.javatime.lang.model,
+ no.javatime.lang.scoping,
+ no.javatime.lang.serializer,
+ no.javatime.lang.parser.antlr
+Import-Package: no.javatime.core.model.annotations,
+ org.apache.log4j

@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Model Elements
+Bundle-SymbolicName: no.javatime.core.model
+Bundle-Version: 0.0.1.qualifier
+Bundle-Activator: no.javatime.core.model.Activator
+Bundle-Vendor: Lingo labs
+Export-Package: no.javatime.core.model.annotations,
+ no.javatime.core.model.elements
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: javax.inject;version="1.0.0",
+ no.javatime.inplace.extender.intface,
+ no.javatime.inplace.log.intface,
+ no.javatime.inplace.region.intface,
+ no.javatime.inplace.region.status,
+ org.osgi.framework;version="1.3.0"
+Time-Model-Element-Service: no.javatime.core.model.elements.Time
+Numeral-Model-Element-Service: no.javatime.core.model.elements.NumeralImpl
+Time-Series-Model-Element-Service: no.javatime.core.model.elements.TimeSeriesProviderImpl
