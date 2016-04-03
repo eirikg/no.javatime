@@ -4,6 +4,7 @@
 package no.javatime.lang.jvmmodel
 
 import com.google.inject.Inject
+import no.javatime.core.model.annotations.ModelElement
 import no.javatime.core.model.annotations.Action
 import no.javatime.core.model.annotations.GetSeriesValue
 import no.javatime.core.model.annotations.Insert
@@ -12,9 +13,9 @@ import no.javatime.core.model.annotations.SetSeriesValue
 import no.javatime.core.model.annotations.Start
 import no.javatime.core.model.annotations.StartValue
 import no.javatime.core.model.annotations.Stop
+import no.javatime.lang.model.ModelElementType
 import no.javatime.lang.model.Field
 import no.javatime.lang.model.FieldTypeName
-import no.javatime.lang.model.ModelElement
 import no.javatime.lang.model.Operation
 import no.javatime.lang.model.OperationTypeName
 import org.eclipse.emf.common.util.EList
@@ -48,16 +49,15 @@ class ModelJvmModelInferrer extends AbstractModelInferrer {
 	@Inject TypeReferences typeReferences 
 	@Inject TypesFactory typesFactory
 
-	def dispatch void infer(ModelElement modelElement, IJvmDeclaredTypeAcceptor acceptor, 
+	def dispatch void infer(ModelElementType modelElement, IJvmDeclaredTypeAcceptor acceptor, 
             boolean isPrelinkingPhase) {
 
     	acceptor.accept(modelElement.toClass(modelElement.fullyQualifiedName)) [
 		
 			fileHeader = 'Generated for the JavaTime Language by Xtext'			
-			val annotationRef = annotationRef(typeof(no.javatime.core.model.annotations.ModelElement))			
-			// val annotationRef = modelElement.toAnnotation(typeof(no.javatime.core.model.annotations.ModelElement))
+			val annotationRef = annotationRef(typeof(ModelElement))			
 			modelElement.addJvmEnumValueToAnnotation(annotationRef, "type", 
-				typeof(no.javatime.core.model.annotations.ModelElement.Type), modelElement.typeName.toString.toUpperCase)
+				typeof(ModelElement.Type), modelElement.typeName.toString.toUpperCase)
 			annotations += annotationRef
 	      	documentation = modelElement.documentation
 			var EList<XAnnotation> modelElementAnnotations = modelElement.getModelElementAnnotations()
@@ -72,7 +72,7 @@ class ModelJvmModelInferrer extends AbstractModelInferrer {
 	      	for (member : modelElement.members) {	        
 	        	switch member {
 	          	Field : {
-	       			it.members += member.toField(member.name, member.type) [  
+	       			it.members += member.toField(member.name, member.memberType) [  
 		        		documentation = member.documentation
 						createAnnotation(annotations, member.typeName)											
 						var EList<XAnnotation> fieldAnnotations = member.getFieldAnnotations()	      	
@@ -80,7 +80,7 @@ class ModelJvmModelInferrer extends AbstractModelInferrer {
 						initializer = member.initExp
 		        	]
 		           		val String operationName = member.name.toFirstUpper
-		           		it.members += member.toMethod('get'+ operationName, member.type) [
+		           		it.members += member.toMethod('get'+ operationName, member.memberType) [
 							if (member.typeName.equals(FieldTypeName.SERIESVALUE)) {
 								documentation = getSeriesGetterDoc()
 								createAnnotation(annotations, OperationTypeName.GETSERIESVALUE)													        		
@@ -96,13 +96,13 @@ class ModelJvmModelInferrer extends AbstractModelInferrer {
 							} else {
 								documentation = getSetterDoc(member.name);
 							}
-		               		parameters += member.toParameter(member.name, member.type)
+		               		parameters += member.toParameter(member.name, member.memberType)
 		        			body = ''' this.«member.name» = «member.name»;'''
 		        			
 		        		]		        		
 	          	}      
 		        Operation : {
-		        	it.members += member.toMethod(member.name, member.type) [
+		        	it.members += member.toMethod(member.name, member.memberType) [
 			       		documentation = member.documentation			       		
 						createAnnotation(annotations, member.typeName)					
 						var EList<XAnnotation> methodAnnotations = member.getMethodAnnotations()

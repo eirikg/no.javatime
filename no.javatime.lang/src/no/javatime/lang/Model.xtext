@@ -3,18 +3,19 @@ grammar no.javatime.lang.Model with org.eclipse.xtext.xbase.annotations.XbaseWit
 generate model "http://www.javatime.no/lang/Model"
 
 Model:
+    {Model}
     importSection=XImportSection?
-   	(elements += Element)*;
+   	elements += Element*;
  
-Element:
-  PackageDeclaration | ModelElement;
-
 PackageDeclaration:
   'package' name = QualifiedName '{'
-    (elements += Element)*
+    packageElements += Element*
   '}';
   
- ModelElement:
+Element:
+  PackageDeclaration | ModelElementType;
+
+ ModelElementType:
     typeName = ModelElementTypeName modelElementAnnotations+=XAnnotation* name=ValidID ('extends' superType=JvmTypeReference)? 
     ('implements' implements+=JvmTypeReference (',' implements+=JvmTypeReference)*)? '{'
         members+=Member*
@@ -24,11 +25,11 @@ Member:
     Field | Operation;
  
 Field:
-   typeName = FieldTypeName? fieldAnnotations+=XAnnotation* type=JvmTypeReference name= ValidID ('=' initExp = XExpression)?;
+   typeName = FieldTypeName? fieldAnnotations+=XAnnotation* memberType=JvmTypeReference name= ValidID ('=' initExp = XExpression)?;
 
 
 Operation:
-    typeName = OperationTypeName methodAnnotations+=XAnnotation* type=JvmTypeReference name=ValidID 
+    typeName = OperationTypeName methodAnnotations+=XAnnotation* memberType=JvmTypeReference name=ValidID 
         '('(formalParameters+=FullJvmFormalParameter 
         (',' formalParameters+=FullJvmFormalParameter)*)?')'
     body=XBlockExpression;
