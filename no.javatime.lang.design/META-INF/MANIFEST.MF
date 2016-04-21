@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: no.javatime.lang.design
+Bundle-SymbolicName: no.javatime.lang.design;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-ClassPath: bin
+Bundle-Activator: no.javatime.lang.design.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.sirius,
+ no.javatime.lang;bundle-version="1.0.0",
+ org.eclipse.xtext.xbase;bundle-version="2.9.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

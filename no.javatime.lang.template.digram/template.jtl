@@ -1,0 +1,25 @@
+package no.javatime.lang.sample.test { 
+
+	state TestState1 { 
+	
+	} 
+
+	transition TestTransition2 { 
+	}
+
+	state TestState2 { 
+		
+		insert TestTransition2 testTransition2
+		action Double testAction() {
+			return 0d;
+		}
+	} 
+	
+	transition TestTransition1 { 
+	
+	}
+} 
+
+package no.javatime.lang.mypackage { 
+	
+} 	

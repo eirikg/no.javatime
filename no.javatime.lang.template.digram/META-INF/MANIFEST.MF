@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Template Digram
+Bundle-SymbolicName: no.javatime.lang.template.digram
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: bin
+Bundle-Activator: no.javatime.lang.template.digram.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: com.google.inject;version="1.3.0",
+ no.javatime.core.model.annotations,
+ org.osgi.framework;version="1.3.0"

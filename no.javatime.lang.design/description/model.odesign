@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="model" version="10.1.0.201507271600">
+  <ownedViewpoints name="Design" modelFileExtension="jtl">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="JavaTime Diagram" domainClass="model.Model" enablePopupBars="true">
+      <metamodel href="http://www.javatime.no/lang/Model#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="PackageNode" label="Package" semanticCandidatesExpression="aql:self.elements" doubleClickDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NavigateToXtextEditor']" domainClass="model.PackageDeclaration">
+          <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW" width="12" height="8">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="StateNode" label="State" preconditionExpression="aql:self.oclAsType(model::ModelElementType).typeName = model::ModelElementTypeName::STATE" semanticCandidatesExpression="aql:self.elements.packageElements" doubleClickDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NavigateToXtextEditor']" domainClass="model.ModelElementType">
+          <style xsi:type="style:SquareDescription" tooltipExpression="State" labelPosition="node" resizeKind="NSEW" width="8" height="8">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="TransitionNode" label="Transition" preconditionExpression="aql:self.oclAsType(model::ModelElementType).typeName = model::ModelElementTypeName::TRANSITION" semanticCandidatesExpression="aql:self.elements.packageElements" doubleClickDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NavigateToXtextEditor']" domainClass="model.ModelElementType">
+          <style xsi:type="style:EllipseNodeDescription" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="8" verticalDiameterComputationExpression="8">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="PackageEdge" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='PackageNode']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='StateNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='TransitionNode']" targetFinderExpression="aql:self.packageElements">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ModelElementRelationshipBasedEdge" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='StateNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='TransitionNode']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='StateNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='TransitionNode']" targetFinderExpression="aql:superType">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Inheritance" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='StateNode']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='StateNode']" targetFinderExpression="feature.superType" sourceFinderExpression="feature:eContainer" domainClass="model.ModelElementType" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="Section Tools">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="NavigateToXtextEditor" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='StateNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='PackageNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='TransitionNode']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:openTextEditor"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="NodeCreateState" label="State" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='StateNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="model.ModelElementType" referenceName="elements">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'state'+elements->filter(model::ModelElementType)->size()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="typeName" valueExpression="aql:model::ModelElementTypeName::STATE"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="NodeCreateTransition" label="Transition" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='TransitionNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="model.ModelElementType" referenceName="elements">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'transition'+elements->filter(model::ModelElementType)->size()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="typeName" valueExpression="aql:model::ModelElementTypeName::TRANSITION"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="NodeCreatePackageDeclaration" label="Package" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='PackageNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="model.PackageDeclaration" referenceName="elements">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'mypackage'"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="EdgeCreationModelElementType" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@edgeMappings[name='ModelElementRelationshipBasedEdge']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="superType" valueExpression="aql:self.oclAsType(types::JvmTypeReference).type"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="System Dynamics Notation"/>
+      <additionalLayers name="Test Constructs"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Package Diagram" titleExpression="aql:'Package '+self.name" domainClass="model.Element" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <nodeMappings name="StateNode" label="Package State" preconditionExpression="aql:self.oclAsType(model::ModelElementType).typeName = model::ModelElementTypeName::STATE" semanticCandidatesExpression="aql:self.packageElements" domainClass="model.ModelElementType">
+          <style xsi:type="style:SquareDescription" tooltipExpression="State" labelPosition="node" resizeKind="NSEW" width="8" height="8">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="TransitionNode" label="Package Transition" preconditionExpression="aql:self.oclAsType(model::ModelElementType).typeName = model::ModelElementTypeName::TRANSITION" semanticCandidatesExpression="aql:self.packageElements" domainClass="model.ModelElementType">
+          <borderedNodeMappings name="TransitionNode" label="Transition" preconditionExpression="aql:self.oclAsType(model::ModelElementType).typeName = model::ModelElementTypeName::TRANSITION" semanticCandidatesExpression="aql:self.packageElements" domainClass="model.ModelElementType">
+            <style xsi:type="style:EllipseNodeDescription" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="8" verticalDiameterComputationExpression="8">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:EllipseNodeDescription" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="8" verticalDiameterComputationExpression="8">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="FieldEdge" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Package%20Diagram']/@defaultLayer/@nodeMappings[name='StateNode']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Package%20Diagram']/@defaultLayer/@nodeMappings[name='TransitionNode']" targetFinderExpression="service:getModelElementTypes">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="PackageContainer" semanticCandidatesExpression="aql:self" domainClass="model.Element" childrenPresentation="List">
+          <subNodeMappings name="ElementNodes" semanticCandidatesExpression="aql:self.packageElements" domainClass="model.Element">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="aql:self.name">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="no.javatime.lang.design.services.ModelServices"/>
+  </ownedViewpoints>
+</description:Group>
