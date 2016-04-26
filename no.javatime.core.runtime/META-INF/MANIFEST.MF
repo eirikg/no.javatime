@@ -3,8 +3,10 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Runtime
 Bundle-SymbolicName: no.javatime.core.runtime
 Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: bin
 Bundle-Activator: no.javatime.core.runtime.Activator
 Export-Package: no.javatime.core.runtime.simulator
+Model-Simulator-Service: no.javatime.core.runtime.simulator.SimulatorImpl
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: javax.inject;version="1.0.0",
  no.javatime.core.model.annotations,
@@ -12,9 +14,7 @@ Import-Package: javax.inject;version="1.0.0",
  no.javatime.inplace.extender.intface,
  no.javatime.inplace.log.intface,
  no.javatime.inplace.region.status,
- no.javatime.pl.xygraph.intface,
  org.eclipse.osgi.util;version="1.1.0",
  org.osgi.framework;version="1.3.0",
  org.osgi.framework.wiring;version="1.2.0",
  org.osgi.util.tracker;version="1.5.1"
-Model-Simulator-Service: no.javatime.core.runtime.simulator.SimulatorImpl
