@@ -1,25 +1,63 @@
+import no.javatime.core.model.elements.State
+import no.javatime.core.model.elements.Transition
+import no.javatime.lang.sample.test.TestInterestPayments
+
 package no.javatime.lang.sample.test { 
 
-	state TestState1 { 
+	state myState {
+		
+	}
+	
+	state TestBalance extends State { 
+		
+		insert TestInterestPayments interestPayments
+		
+		startValue Double testDeposit() {
+			return 10d
+		}
+
+		action Double testBalance() {
+			return value + interestPayments.value * dt
+		}
 	
 	} 
 
-	transition TestTransition2 { 
+	transition TestInterestPayments extends Transition { 
+		
+		insert TestBalance testBalance
+		
+		action Double testInterest() {
+			return testBalance.value * 0.1	
+		}  
 	}
 
 	state TestState2 { 
 		
-		insert TestTransition2 testTransition2
-		action Double testAction() {
-			return 0d;
-		}
 	} 
 	
 	transition TestTransition1 { 
 	
 	}
+	
+	package nestedpackage {
+		
+		state NestedState {
+			
+		insert TestInterestPayments testTransition2			
+		}	
+	}
 } 
 
+
 package no.javatime.lang.mypackage { 
+
+	state TestState3 {
+		insert TestTransition3 testTransition3
+		
+	}
+
+	transition TestTransition3 { 
 	
+	}
 } 	
+
