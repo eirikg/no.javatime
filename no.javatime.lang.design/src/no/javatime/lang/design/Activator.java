@@ -34,8 +34,13 @@ public class Activator extends AbstractUIPlugin {
     public void start(BundleContext context) throws Exception {
       super.start(context);
 	  plugin = this;
-	  viewpoints = new HashSet<Viewpoint>();
-	  viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/model.odesign")); 
+	  try {
+		  viewpoints = new HashSet<Viewpoint>();
+		  viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/model.odesign")); 
+
+	  } catch (Exception e) {
+		 System.out.println("Error loading odesign file");
+	  }
     }
 
     /*

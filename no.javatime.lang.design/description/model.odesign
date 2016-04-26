@@ -3,6 +3,9 @@
   <ownedViewpoints name="Design" modelFileExtension="jtl">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="JavaTime Diagram" domainClass="model.Model" enablePopupBars="true">
       <metamodel href="http://www.javatime.no/lang/Model#/"/>
+      <metamodel href="http://www.eclipse.org/xtext/xbase/Xtype#/"/>
+      <metamodel href="http://www.eclipse.org/xtext/common/JavaVMTypes#/"/>
+      <metamodel href="http://www.eclipse.org/xtext/xbase/Xbase#/"/>
       <defaultLayer name="Default">
         <nodeMappings name="PackageNode" label="Package" semanticCandidatesExpression="aql:self.elements" doubleClickDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NavigateToXtextEditor']" domainClass="model.PackageDeclaration">
           <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW" width="12" height="8">
