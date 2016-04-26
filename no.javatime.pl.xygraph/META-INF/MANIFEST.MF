@@ -3,6 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Xygraph
 Bundle-SymbolicName: no.javatime.pl.xygraph;singleton:=true
 Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: bin
 Bundle-Activator: no.javatime.pl.xygraph.Activator
 Export-Package: no.javatime.pl.xygraph.intface
 Require-Bundle: org.eclipse.ui,
@@ -18,9 +19,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.swt,
  org.eclipse.e4.ui.services;bundle-version="1.2.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-XYGraph-Model-Service: no.javatime.pl.xygraph.impl.XYGraph
 Import-Package: javax.annotation;version="1.0.0";resolution:=optional,
  javax.inject;version="1.0.0",
  no.javatime.core.model.annotations,
  no.javatime.core.model.elements,
  no.javatime.inplace.extender.intface
+XYGraph-Model-Service: no.javatime.pl.xygraph.impl.XYGraph
