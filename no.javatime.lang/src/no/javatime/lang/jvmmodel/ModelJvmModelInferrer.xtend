@@ -32,6 +32,15 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.eclipse.xtext.common.types.JvmAnyTypeReference
+import no.javatime.core.model.elements.State
+import org.eclipse.xtext.common.types.JvmGenericType
+import no.javatime.lang.model.ModelElementTypeName
+import no.javatime.core.model.elements.Endogenous
+import no.javatime.core.model.elements.Exogenous
+import no.javatime.core.model.elements.Transition
+import no.javatime.core.model.elements.Input
+import javax.lang.model.element.Element
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -48,26 +57,28 @@ class ModelJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension IQualifiedNameProvider 
 	@Inject TypeReferences typeReferences 
 	@Inject TypesFactory typesFactory
-
+	
 	def dispatch void infer(ModelElementType modelElement, IJvmDeclaredTypeAcceptor acceptor, 
             boolean isPrelinkingPhase) {
 
     	acceptor.accept(modelElement.toClass(modelElement.fullyQualifiedName)) [
 		
 			fileHeader = 'Generated for the JavaTime Language by Xtext'			
-			val annotationRef = annotationRef(typeof(ModelElement))			
+			val annotationRef = annotationRef(ModelElement)			
 			modelElement.addJvmEnumValueToAnnotation(annotationRef, "type", 
-				typeof(ModelElement.Type), modelElement.typeName.toString.toUpperCase)
+				ModelElement.Type, modelElement.typeName.toString.toUpperCase)
 			annotations += annotationRef
 	      	documentation = modelElement.documentation
 			var EList<XAnnotation> modelElementAnnotations = modelElement.getModelElementAnnotations()
-		  	addAnnotations(modelElementAnnotations)
+		  	addAnnotations(modelElementAnnotations)	      	
 	      	if (modelElement.superType != null) {
 	        	superTypes += modelElement.superType.cloneWithProxies
+	        } else {
+	        	superTypes += inheritFromModelElementType(modelElement.typeName)
 	        }
-	      	var EList<JvmTypeReference> implements = modelElement.getImplements()
-	      	for (implement : implements){
-	      		superTypes += implement.cloneWithProxies
+	      	var EList<JvmTypeReference> interfaces = modelElement.getImplements()
+	      	for (implement : interfaces){
+	      		interfaces += implement.cloneWithProxies
 	      	}	      
 	      	for (member : modelElement.members) {	        
 	        	switch member {
@@ -105,7 +116,7 @@ class ModelJvmModelInferrer extends AbstractModelInferrer {
 		        	it.members += member.toMethod(member.name, member.memberType) [
 			       		documentation = member.documentation			       		
 						createAnnotation(annotations, member.typeName)					
-						var EList<XAnnotation> methodAnnotations = member.getMethodAnnotations()
+						var EList<XAnnotation> methodAnnotations = member.getOperationAnnotations()
 						addAnnotations(methodAnnotations)	      	
 				   		var EList<JvmFormalParameter> formalParameters = member.getFormalParameters()
 		          		for (formalParameter : formalParameters) {
@@ -118,6 +129,44 @@ class ModelJvmModelInferrer extends AbstractModelInferrer {
 	      }
 	    ]
 	}
+	
+	def JvmTypeReference inheritFromModelElementType(ModelElementTypeName typeName) {
+
+		var JvmTypeReference classReference = null		
+		
+		switch (typeName) {
+			case ModelElementTypeName.ENDOGENOUS: {
+				classReference = typeRef(Endogenous)				
+			}
+			case ModelElementTypeName.EXOGENOUS: {
+				classReference = typeRef(Exogenous)				
+			}
+			case ModelElementTypeName.STATE: {
+				classReference = typeRef(State)				
+			}
+			case ModelElementTypeName.TRANSITION: {
+				classReference = typeRef(Transition)				
+			}
+			case ModelElementTypeName.LEVEL: {
+				classReference = typeRef(State)				
+			}
+			case ModelElementTypeName.RATE: {
+				classReference = typeRef(Transition)				
+			}
+			case ModelElementTypeName.SYSTEM: {
+				classReference = typeRef(no.javatime.core.model.elements.System)				
+			}
+			case ModelElementTypeName.INPUT: {
+				classReference = typeRef(Input)				
+			}
+			case ModelElementTypeName.ELEMENT: {
+				classReference = typeRef(Element)				
+			}
+			default: {
+			}
+		}
+		classReference
+	}
 
 	def void createAnnotation(EList<JvmAnnotationReference> annotations, FieldTypeName fieldType) {
 
@@ -125,10 +174,10 @@ class ModelJvmModelInferrer extends AbstractModelInferrer {
 		
 		switch (fieldType) {
 			case FieldTypeName.SERIESVALUE: {
-				annotationType = typeof(SeriesValue)				
+				annotationType = SeriesValue				
 			}
 			case FieldTypeName.INSERT: {
-				annotationType = typeof(Insert)				
+				annotationType = Inject				
 			}
 			default: {
 			}
@@ -144,22 +193,22 @@ class ModelJvmModelInferrer extends AbstractModelInferrer {
 		
 		switch (operationType) {
 			case OperationTypeName.START: {
-				annotationType = typeof(Start)				
+				annotationType = Start				
 			}
 			case OperationTypeName.STOP: {
-				annotationType = typeof(Stop)				
+				annotationType = Stop				
 			}
 			case OperationTypeName.SETSERIESVALUE: {
-				annotationType = typeof(SetSeriesValue)				
+				annotationType = SetSeriesValue				
 			}
 			case OperationTypeName.GETSERIESVALUE: {
-				annotationType = typeof(GetSeriesValue)				
+				annotationType = GetSeriesValue				
 			}
 			case OperationTypeName.STARTVALUE: {
-				annotationType = typeof(StartValue)				
+				annotationType = StartValue				
 			}
 			case OperationTypeName.ACTION: {
-				annotationType = typeof(Action)				
+				annotationType = Action				
 			}
 			default: {
 			}

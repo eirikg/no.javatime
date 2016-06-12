@@ -2,12 +2,17 @@ grammar no.javatime.lang.Model with org.eclipse.xtext.xbase.annotations.XbaseWit
 
 generate model "http://www.javatime.no/lang/Model"
 
+import "http://www.eclipse.org/xtext/xbase/Xtype"
+import "http://www.eclipse.org/xtext/xbase/Xbase"
+import "http://www.eclipse.org/xtext/common/JavaVMTypes"
+
 Model:
     {Model}
-    importSection=XImportSection?
+    // importSection=XImportSection?
    	elements += Element*;
  
 PackageDeclaration:
+   importSection=XImportSection?
   'package' name = QualifiedName '{'
     packageElements += Element*
   '}';
@@ -16,7 +21,8 @@ Element:
   PackageDeclaration | ModelElementType;
 
  ModelElementType:
-    typeName = ModelElementTypeName modelElementAnnotations+=XAnnotation* name=ValidID ('extends' superType=JvmTypeReference)? 
+    typeName = ModelElementTypeName modelElementAnnotations+=XAnnotation* 
+    name=ValidID ('extends' superType=JvmTypeReference)? 
     ('implements' implements+=JvmTypeReference (',' implements+=JvmTypeReference)*)? '{'
         members+=Member*
     '}';
@@ -29,7 +35,7 @@ Field:
 
 
 Operation:
-    typeName = OperationTypeName methodAnnotations+=XAnnotation* memberType=JvmTypeReference name=ValidID 
+    typeName = OperationTypeName operationAnnotations+=XAnnotation* memberType=JvmTypeReference name=ValidID 
         '('(formalParameters+=FullJvmFormalParameter 
         (',' formalParameters+=FullJvmFormalParameter)*)?')'
     body=XBlockExpression;
@@ -43,6 +49,3 @@ enum FieldTypeName: FIELD = 'field' | SERIESVALUE = 'seriesValue' | INSERT = 'in
 enum OperationTypeName:
 	OPERATON = 'operation' | ACTION = 'action' | STARTVALUE = 'startValue' | SETSERIESVALUE = 'setSeriesValue' | 
 	GETSERIESVALUE = 'getSeriesValue' | START = 'start' | STOP = 'stop';
-	
-//Declaration: // Type
-//	annotations += XAnnotation* type=JvmTypeReference name=ValidID;
