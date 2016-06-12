@@ -3,13 +3,13 @@
  */
 package no.javatime.core.model.elements;
 
-import javax.inject.Inject;
+import com.google.inject.Inject;
 
 import no.javatime.core.model.annotations.GetSeriesValue;
 import no.javatime.core.model.annotations.ModelElement;
+import no.javatime.core.model.annotations.ModelElement.Type;
 import no.javatime.core.model.annotations.SetSeriesValue;
 import no.javatime.core.model.annotations.StartValue;
-import no.javatime.core.model.annotations.ModelElement.Type;
 import no.javatime.inplace.extender.intface.Extenders;
 
 /**

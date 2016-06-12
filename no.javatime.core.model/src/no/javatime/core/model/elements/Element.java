@@ -21,7 +21,7 @@
 
 package no.javatime.core.model.elements;
 
-import javax.inject.Inject;
+import com.google.inject.Inject;
 
 public abstract class Element implements IElement {
 
