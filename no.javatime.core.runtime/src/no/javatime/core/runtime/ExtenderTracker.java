@@ -53,7 +53,7 @@ public class ExtenderTracker extends ExtenderBundleTracker {
 	 	Must change this if the name of the language bundle is changed
 	 	Move this to the language bundle in question
 	*/
-	public static String DSL_LANG_SYMBOLIC_NAME = "no.javatime.lang";
+	public static String DSL_LANG_SYMBOLIC_NAME = "no.javatime.core.model";
 
 	private Bundle thisBundle;
 	private BundleLog bundleLog;
@@ -110,7 +110,7 @@ public class ExtenderTracker extends ExtenderBundleTracker {
 				// TODO May also be used to filter timeElementBundle elements to include in a simulation run
 				// Extender<Events> extender = Extenders.getExtender(Events.class.getName());
 				// if (null != extender) {
-				if (!bundle.getSymbolicName().endsWith(DSL_LANG_SYMBOLIC_NAME)) {
+				if (!bundle.getSymbolicName().startsWith(DSL_LANG_SYMBOLIC_NAME) && !bundle.equals(thisBundle)) {
 					Collection<Bundle> provBundles = BundleUtil.getDirectProvidingBundles(bundle);
 
 					// If this bundle use the no.javatime.core.model bundle it is simulation model
@@ -230,7 +230,7 @@ public class ExtenderTracker extends ExtenderBundleTracker {
 					registeredClasses.add(serviceClass);
 					// logExdenderInfo(thisBundle, extender, interfaces);
 				}
-			} catch (ExtenderException e) {
+			} catch (ExtenderException | NoClassDefFoundError e) {
 				BundleLog bundleLog = Extenders.getService(BundleLog.class);
 				if (null != bundleLog) {
 					bundleLog.add(StatusCode.WARNING, bundle, null,

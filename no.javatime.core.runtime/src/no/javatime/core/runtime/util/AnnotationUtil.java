@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-import javax.inject.Inject;
+import com.google.inject.Inject;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
