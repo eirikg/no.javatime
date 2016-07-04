@@ -14,7 +14,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="StateNode" label="State" preconditionExpression="aql:self.oclAsType(model::ModelElementType).typeName = model::ModelElementTypeName::STATE" semanticCandidatesExpression="aql:self.elements.packageElements" doubleClickDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NavigateToXtextEditor']" domainClass="model.ModelElementType">
+        <nodeMappings name="StateNode" label="State" preconditionExpression="aql:self.oclAsType(model::ModelElementType).typeName = model::ModelElementTypeName::STATE" semanticCandidatesExpression="aql:self.elements.packageElements" doubleClickDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OpenEmbeddedEditor']" domainClass="model.ModelElementType">
           <style xsi:type="style:SquareDescription" tooltipExpression="State" labelPosition="node" resizeKind="NSEW" width="8" height="8">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -52,8 +52,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <toolSections name="Section Tools">
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="NavigateToXtextEditor" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='StateNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='PackageNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='TransitionNode']">
+        <toolSections name="JavaTimeDiagramTools" label="Tools">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="NavigateToXtextEditor" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='PackageNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='TransitionNode']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -102,12 +102,28 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="OpenEmbeddedXtextEditor" id="no.javatime.lang.design.OpenEmbeddedEditor"/>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenEmbeddedEditor" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@nodeMappings[name='StateNode']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="no.javatime.lang.design.OpenEmbeddedEditor" action="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OpenEmbeddedXtextEditor']">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.eContainer()/]">
+                  <subModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
       <additionalLayers name="System Dynamics Notation"/>
       <additionalLayers name="Test Constructs"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Package Diagram" titleExpression="aql:'Package '+self.name" domainClass="model.Element" enablePopupBars="true">
+      <metamodel href="http://www.javatime.no/lang/Model#/"/>
+      <metamodel href="http://www.eclipse.org/xtext/xbase/Xtype#/"/>
+      <metamodel href="http://www.eclipse.org/xtext/common/JavaVMTypes#/"/>
+      <metamodel href="http://www.eclipse.org/xtext/xbase/Xbase#/"/>
       <defaultLayer name="Default">
         <nodeMappings name="StateNode" label="Package State" preconditionExpression="aql:self.oclAsType(model::ModelElementType).typeName = model::ModelElementTypeName::STATE" semanticCandidatesExpression="aql:self.packageElements" domainClass="model.ModelElementType">
           <style xsi:type="style:SquareDescription" tooltipExpression="State" labelPosition="node" resizeKind="NSEW" width="8" height="8">
@@ -130,7 +146,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="FieldEdge" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Package%20Diagram']/@defaultLayer/@nodeMappings[name='StateNode']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Package%20Diagram']/@defaultLayer/@nodeMappings[name='TransitionNode']" targetFinderExpression="service:getModelElementTypes">
+        <edgeMappings name="FieldEdge" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Package%20Diagram']/@defaultLayer/@nodeMappings[name='StateNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Package%20Diagram']/@defaultLayer/@nodeMappings[name='TransitionNode']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Package%20Diagram']/@defaultLayer/@nodeMappings[name='TransitionNode'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Package%20Diagram']/@defaultLayer/@nodeMappings[name='StateNode']" targetFinderExpression="service:getModelElementTypes">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -154,6 +170,20 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </containerMappings>
+        <toolSections name="PackageDiagramTools" label="Tools">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenEmbeddedEditor">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="no.javatime.lang.design.OpenEmbeddedEditor" action="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='JavaTime%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OpenEmbeddedXtextEditor']">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.eContainer()/]">
+                  <subModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Package%20Diagram']"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="OpenEmbeddedXtextEditor" id="no.javatime.lang.design.OpenEmbeddedEditor"/>
+        </toolSections>
       </defaultLayer>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="no.javatime.lang.design.services.ModelServices"/>

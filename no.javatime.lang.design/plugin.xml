@@ -7,4 +7,11 @@
 	       name="model">
     </component>
   </extension>
+  <extension
+        point="org.eclipse.sirius.externalJavaAction">
+     <javaActions
+           actionClass="no.javatime.lang.design.OpenEmbeddedEditor"
+           id="no.javatime.lang.design.OpenEmbeddedEditor">
+     </javaActions>
+  </extension>
 </plugin>
