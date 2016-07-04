@@ -2,10 +2,15 @@ Do this from the Model Explorer
 
 A. Create a Sirius modeling bundle project with Xtetxt (.diagram):
 
-1. create a bundle project (not a plug-in) and add to import:
-	no.javatime.core.model.annotations
-	com.google.inject 
-packages
+1. Create a bundle project (not a plug-in) and add to 
+	Imported packages:
+		no.javatime.core.model.annotations
+		no.javatime.core.model.elements
+		com.google.inject
+	Required Plug-ins:
+		org.eclipse.xtext.xbase 
+	Java Build Path (Project | Properties | Java Build Path or add the folder manually to the build.properties file):	
+		The src-gen folder
 2. Right click bundle and select  Configure | convert to modeling project
 3. Right click bundle and select  Configure | add Xtext nature
 4. Activate workspace bundles
