@@ -117,7 +117,7 @@ public class ClassModelElementSorter {
 		sortModelElements(modelElementClasses, modelTypes);
 		// Add the complete model as input to phase two sort
 		modelElementClasses.addAll(classExecOrder);
-		logSortedModelElements(modelElementClasses);
+		logSortedModelElements(modelElementClasses, "Unsorted Model Element Classes to execute");
 		this.cycles = allowCyclesTmp;
 		// Sort according to groups of model element types
 		sortModel(modelElementClasses);
@@ -188,7 +188,7 @@ public class ClassModelElementSorter {
 		modelTypes = EnumSet.of(ModelElement.Type.TRANSITION, ModelElement.Type.RATE,
 				ModelElement.Type.DERIVATIVE);
 		sortModelElements(model, modelTypes);
-		logSortedModelElements(classExecOrder);
+		logSortedModelElements(classExecOrder, "Sorted Model Element Classes in execution order");
 	}
 
 	/**
@@ -480,11 +480,10 @@ public class ClassModelElementSorter {
 	 * 
 	 * @param modelElements Model elements to log
 	 */
-	public void logSortedModelElements(Collection<Class<?>> modelElements) {
+	public void logSortedModelElements(Collection<Class<?>> modelElements, String headerText) {
 
 		BundleLog bundleLog = Extenders.getService(BundleLog.class);
-		bundleLog.add(StatusCode.INFO, Activator.getContext().getBundle(), null,
-				"Sorted Model Element Classes in execution order");
+		bundleLog.add(StatusCode.INFO, Activator.getContext().getBundle(), null, headerText);
 		for (Class<?> clazz : modelElements) {
 			Bundle bundle = FrameworkUtil.getBundle(clazz);
 			ModelElement annotation = clazz.getAnnotation(ModelElement.class);
