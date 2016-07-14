@@ -1,4 +1,5 @@
 import no.javatime.lang.sample.test.TestInterestPayments
+import no.javatime.lang.mypackage.TestTransition3
 
 package no.javatime.lang.sample.test { 
 
@@ -32,6 +33,7 @@ package no.javatime.lang.sample.test {
 	transition TestInterestPayments { 
 		
 		insert TestBalance testBalance
+		insert TestTransition3 tt3
 		
 //		action Double testInterest() {
 //			return testBalance.value * 0.1	
@@ -55,14 +57,13 @@ package no.javatime.lang.sample.test {
 	}
 } 
 
-
 package no.javatime.lang.mypackage { 
 
 	state TestState3 {
 		insert TestTransition3 testTransition3
-		
-	}
+	 }
+ 	transition TestTransition3 { }
 
-	transition TestTransition3 { }
-} 	
-state ^state { } transition ^transition { }
+	transition TestTransition6 {
+	}
+} package no.javatime.lang.template.digram.newpackage1 { }
