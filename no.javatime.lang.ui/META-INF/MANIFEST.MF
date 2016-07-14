@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: no.javatime.lang.ui
+Bundle-SymbolicName: no.javatime.lang.ui;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: no.javatime.lang.ui.internal.LangActivator
+Bundle-Vendor: My Company
+Export-Package: no.javatime.lang.ui.contentassist,
+ no.javatime.lang.ui.internal,
+ no.javatime.lang.ui.quickfix
+Require-Bundle: no.javatime.lang,
+ no.javatime.lang.ide,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtend.lib;resolution:=optional,
+ org.eclipse.ui,
+ org.eclipse.xtext.xbase.ui,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder,
+ org.eclipse.jdt.debug.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: org.apache.log4j
