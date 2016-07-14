@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: no.javatime.lang.ide
+Bundle-SymbolicName: no.javatime.lang.ide;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: My Company
+Export-Package: no.javatime.lang.ide.contentassist.antlr,
+ no.javatime.lang.ide.contentassist.antlr.internal
+Require-Bundle: no.javatime.lang,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
